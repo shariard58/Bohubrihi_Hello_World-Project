@@ -105,20 +105,25 @@ class App extends Component {
 
 
     // const booksState = this.state.books;
+    let books = null;
+    if (this.state.showBooks) {
+      books = this.state.books.map((book, index) => {
+        return (
 
-    const books = this.state.books.map((book, index) => {
-      return (
-
-        <Book Writer={book.Writer}
-          BookName={book.bookName}
-          delete={this.deleteBookState.bind(this, index)}
-          key={book.id}
-          inputName={(event) => this.changeWithInputState(event, index)}
+          <Book Writer={book.Writer}
+            BookName={book.bookName}
+            delete={this.deleteBookState.bind(this, index)}
+            key={book.id}
+            inputName={(event) => this.changeWithInputState(event, index)}
 
 
-        />
-      );
-    });
+          />
+        );
+      });
+
+    }
+
+
 
     console.log(books);
 
@@ -134,7 +139,8 @@ class App extends Component {
 
       <button onClick={this.toggleBooks}> Toggle Books </button>
 
-      {this.state.showBooks ? books : null}
+      {books}
+
       {/* <input type="text" onChange={this.changeWithInputState} />
       <br></br>
       <button onClick={this.changeBookState.bind(this, "2021 is the biggest year for me ")}> Change State </button>
