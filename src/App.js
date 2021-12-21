@@ -28,7 +28,9 @@ class App extends Component {
           id: 3, bookName: "The Alchemist ", Writer: "Paulo Ceolho"
         },
 
-      ]
+      ],
+
+      showBooks: true
     }
 
 
@@ -94,6 +96,10 @@ class App extends Component {
 
   }
 
+  toggleBooks = () => {
+    this.setState({ showBooks: !this.state.showBooks })
+  }
+
 
   render() {
 
@@ -124,6 +130,11 @@ class App extends Component {
     return (<div className="App">
 
       <h1> Book List  </h1>
+
+
+      <button onClick={this.toggleBooks}> Toggle Books </button>
+
+      {this.state.showBooks ? books : null}
       {/* <input type="text" onChange={this.changeWithInputState} />
       <br></br>
       <button onClick={this.changeBookState.bind(this, "2021 is the biggest year for me ")}> Change State </button>
@@ -137,7 +148,7 @@ class App extends Component {
         BookName={this.state.books[2].Writer}
         changeBookName={this.changeWithInputState} /> */}
 
-      {books}
+      {/* // {books} */}
 
 
 
