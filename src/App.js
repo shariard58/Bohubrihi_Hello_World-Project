@@ -20,12 +20,12 @@ class App extends Component {
   state =
     {
       books: [
-        { bookName: "1984", Writer: "George Orwell" },
+        { id: 1, bookName: "1984", Writer: "George Orwell" },
         {
-          bookName: "The Da Vinci Code ", Writer: "Dan Brown"
+          id: 2, bookName: "The Da Vinci Code ", Writer: "Dan Brown"
         },
         {
-          bookName: "The Alchemist ", Writer: "Paulo Ceolho"
+          id: 3, bookName: "The Alchemist ", Writer: "Paulo Ceolho"
         },
 
       ]
@@ -103,7 +103,8 @@ class App extends Component {
 
         <Book Writer={book.Writer}
           BookName={book.bookName}
-          delete={this.deleteBookState.bind(this, index)} />
+          delete={this.deleteBookState.bind(this, index)}
+          key={book.id} />
       );
     });
 
