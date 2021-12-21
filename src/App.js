@@ -53,22 +53,26 @@ class App extends Component {
 
   // }
 
-  changeWithInputState = (e) => {
-    this.setState(
-      {
+  changeWithInputState = (e, index) => {
 
-        books: [
-          { bookName: e.target.value, Writer: "George Orwell" },
-          {
-            bookName: e.target.value, Writer: "Dan Brown"
-          },
-          {
-            bookName: e.target.value, Writer: "Humayan Ahmed"
-          },
+    const book = {
 
-        ]
-      }
-    );
+      ...this.state.books[index]
+    }
+
+    book.bookName = e.target.value;
+
+    const book1 = [...this.state.books];
+
+    book1[index] = book;
+
+    this.setState({
+
+      books: book1
+    });
+
+
+
   }
 
 
@@ -91,8 +95,6 @@ class App extends Component {
   }
 
 
-
-
   render() {
 
 
@@ -104,7 +106,11 @@ class App extends Component {
         <Book Writer={book.Writer}
           BookName={book.bookName}
           delete={this.deleteBookState.bind(this, index)}
-          key={book.id} />
+          key={book.id}
+          inputName={(event) => this.changeWithInputState(event, index)}
+
+
+        />
       );
     });
 
