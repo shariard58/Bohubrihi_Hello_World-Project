@@ -1,27 +1,46 @@
-import react from "react";
+import React, { Component } from "react";
 
 import Book from '../representational/Book';
 
-const BookList = (props) => {
+class BookList extends Component {
 
-    return (
+    constructor(props) {
+        super(props);
+        console.log("BookList Constructor");
+    }
+    UNSAFE_componentWillMount() {
+        console.log(" BookList Component will Mount")
+    }
 
-        props.books.map((book, index) => {
-            return (
+    componentDidMount() {
+        console.log("BookList Component Did Mount");
+    }
 
-                <Book Writer={book.Writer}
-                    BookName={book.bookName}
-                    delete={props.deleteBookState.bind(this, index)}
-                    key={book.id}
-                    inputName={(event) => props.changeWithInputState(event, index)}
+    render() {
+
+        console.log("BookList render");
+
+        return (
+
+            this.props.books.map((book, index) => {
+                return (
+
+                    <Book Writer={book.Writer}
+                        BookName={book.bookName}
+                        delete={this.props.deleteBookState.bind(this, index)}
+                        key={book.id}
+                        inputName={(event) => this.props.changeWithInputState(event, index)}
 
 
-                />
-            );
-        })
+                    />
+                );
+            })
 
-    );
-    
+        );
+
+    }
+
+
 }
 
 export default BookList;

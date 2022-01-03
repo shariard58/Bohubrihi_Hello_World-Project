@@ -5,12 +5,20 @@ import BookList from './lists/BookList';
 
 class MainComponent extends Component {
 
-
-    state =
+    constructor(props) {
+        super(props);
+        this.state =
         {
             books: booklist,
             showBooks: true
         }
+
+        console.log("Main Component Life Cycle");
+
+
+
+    }
+
 
 
 
@@ -79,16 +87,26 @@ class MainComponent extends Component {
         this.setState({ showBooks: !this.state.showBooks })
     }
 
+    UNSAFE_componentWillMount() {
+        console.log("MainComponent WillMount ");
+    }
+
+    componentDidMount() {
+        console.log("Maiin Component Did Mount");
+    }
 
     render() {
+
+        console.log("MainComponent render");
+
 
 
         // const booksState = this.state.books;
         let books = null;
         if (this.state.showBooks) {
-            books = <BookList books = {this.state.books} 
-            deleteBookState = {this.deleteBookState}
-            changeWithInputState={this.changeWithInputState}
+            books = <BookList books={this.state.books}
+                deleteBookState={this.deleteBookState}
+                changeWithInputState={this.changeWithInputState}
             />
 
         }
