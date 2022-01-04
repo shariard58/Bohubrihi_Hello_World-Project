@@ -87,9 +87,7 @@ class MainComponent extends Component {
         this.setState({ showBooks: !this.state.showBooks })
     }
 
-    UNSAFE_componentWillMount() {
-        console.log("MainComponent WillMount ");
-    }
+
 
     componentDidMount() {
         console.log("Maiin Component Did Mount");
@@ -100,10 +98,7 @@ class MainComponent extends Component {
         return true;
     }
 
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("Update MainComponent  componentWillUpdate");
 
-    }
 
     componentDidUpdate() {
         console.log("U MainComponent  ComponentDidupdate");
@@ -111,6 +106,15 @@ class MainComponent extends Component {
 
 
 
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log("Main Component getDerivedStateFromProps ", nextProps, prevState);
+        return prevState;
+    }
+
+
+    getSnapshotBeforeUpdate() {
+        console.log("U Booklist getSnapShotBefore Update");
+    }
 
 
     render() {
