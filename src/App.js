@@ -1,6 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
 import MainComponent from './Components/MainComponent';
 
@@ -17,7 +18,14 @@ import MainComponent from './Components/MainComponent';
 // }
 
 const App = () => {
-  return <MainComponent />
+  return (
+    <BrowserRouter>
+
+      <MainComponent />
+    </BrowserRouter>
+  );
+
+
 }
 
 export default App;
