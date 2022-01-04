@@ -95,6 +95,24 @@ class MainComponent extends Component {
         console.log("Maiin Component Did Mount");
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("U MainComponent ShoudComponentUpdate", nextProps, nextState);
+        return true;
+    }
+
+    UNSAFE_componentWillUpdate(nextProps, nextState) {
+        console.log("Update MainComponent  componentWillUpdate");
+
+    }
+
+    componentDidUpdate() {
+        console.log("U MainComponent  ComponentDidupdate");
+    }
+
+
+
+
+
     render() {
 
         console.log("MainComponent render");
