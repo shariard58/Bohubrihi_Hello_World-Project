@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import booklist from '../assets/books';
 import BookList from './lists/BookList';
+import NewBook from './representational/NewBook';
 
 
 class MainComponent extends Component {
@@ -13,7 +14,7 @@ class MainComponent extends Component {
             showBooks: true
         }
 
-        console.log("Main Component Life Cycle");
+
 
 
 
@@ -89,37 +90,12 @@ class MainComponent extends Component {
 
 
 
-    componentDidMount() {
-        console.log("Maiin Component Did Mount");
-    }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("U MainComponent ShoudComponentUpdate", nextProps, nextState);
-        return true;
-    }
-
-
-
-    componentDidUpdate() {
-        console.log("U MainComponent  ComponentDidupdate");
-    }
-
-
-
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log("Main Component getDerivedStateFromProps ", nextProps, prevState);
-        return prevState;
-    }
-
-
-    getSnapshotBeforeUpdate() {
-        console.log("U Booklist getSnapShotBefore Update");
-    }
 
 
     render() {
 
-        console.log("MainComponent render");
+
 
 
 
@@ -144,6 +120,23 @@ class MainComponent extends Component {
 
         return (<div className="App">
 
+            <div className='nav-bar'>
+
+                <ul>
+                    <li>
+                        <a href='/'>Home</a>
+                    </li>
+
+                    <li>
+                        <a href='/new'>NewBook</a>
+                    </li>
+                </ul>
+
+
+            </div>
+
+
+
             <h1> Book List  </h1>
 
 
@@ -165,6 +158,8 @@ class MainComponent extends Component {
         changeBookName={this.changeWithInputState} /> */}
 
             {/* // {books} */}
+
+            <NewBook />
 
 
 
