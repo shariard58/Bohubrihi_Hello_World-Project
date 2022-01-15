@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import booklist from '../assets/books';
 import BookList from './lists/BookList';
 import NewBook from './representational/NewBook';
-import { Route , Routes} from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
+import { render } from "react-dom";
+
 
 class MainComponent extends Component {
 
@@ -52,37 +54,47 @@ class MainComponent extends Component {
 
     render() {
 
-           const books = <BookList books={this.state.books}
-                deleteBookState={this.deleteBookState}
-                changeWithInputState={this.changeWithInputState}
-            />
+        const books = <BookList books={this.state.books}
+            deleteBookState={this.deleteBookState}
+            changeWithInputState={this.changeWithInputState}
+        />
 
         console.log(books);
 
         return (
-        <div className="App">
-            <div className='nav-bar'>
-                <ul>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
+            <div className="App">
+                <div className='nav-bar'>
+                    <ul>
+                        <li>
+                            {/* <a href="/">Home</a> */}
 
-                    <li>
-                        <a href="/new-book">NewBook</a>
-                    </li>
-                </ul>
+                            <Link to="/"> Home</Link>
+                        </li>
+
+                        <li>
+                            {/* <a href="/new-book">NewBook</a> */}
+
+                            <Link to="/new-book">New Book</Link>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* <Route path="/" render={() => <h1>Home</h1>}/> */}
+
+                <Routes>
+                    {/* <Route path="/" element={<h1>Home</h1>} />
+                    <Route path="/new-book" element={<h1>New Book</h1>} /> */}
+
+                    <Route path="/" element={books} />
+                    <Route path="/new-book" element={<NewBook />} />
+
+
+
+
+                </Routes>
+
+
             </div>
-
-            {/* <Route path="/" render={() => <h1>Home</h1>}/> */}
-
-            <Routes>
-                <Route path="/" element={<h1>Home</h1>}/>
-                <Route path="/new-book" element={<h1>New Book</h1>}/>
-
-            </Routes>
-           
-
-        </div>
         );
     }
 
