@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import booklist from '../assets/books';
 import BookList from './lists/BookList';
 import NewBook from './representational/NewBook';
+import { Route, Routes, Link } from 'react-router-dom';
+import { render } from "react-dom";
 
 
 class MainComponent extends Component {
@@ -11,37 +13,8 @@ class MainComponent extends Component {
         this.state =
         {
             books: booklist,
-            showBooks: true
         }
-
-
-
-
-
     }
-
-
-
-
-    // changeBookState = (newBookName) => {
-
-    //   this.setState(
-    //     {
-
-    //       books: [
-    //         { bookName: newBookName, Writer: "George Orwell" },
-    //         {
-    //           bookName: " Kothao Keu Nei ", Writer: "Dan Brown"
-    //         },
-    //         {
-    //           bookName: "Deyal ", Writer: "Humayan Ahmed"
-    //         },
-
-    //       ]
-    //     }
-    //   );
-
-    // }
 
     changeWithInputState = (e, index) => {
 
@@ -60,9 +33,6 @@ class MainComponent extends Component {
 
             books: book1
         });
-
-
-
     }
 
 
@@ -79,94 +49,53 @@ class MainComponent extends Component {
 
             books: book
         })
-
-
-
     }
-
-    toggleBooks = () => {
-        this.setState({ showBooks: !this.state.showBooks })
-    }
-
-
-
-
 
 
     render() {
 
-
-
-
-
-        // const booksState = this.state.books;
-        let books = null;
-        if (this.state.showBooks) {
-            books = <BookList books={this.state.books}
-                deleteBookState={this.deleteBookState}
-                changeWithInputState={this.changeWithInputState}
-            />
-
-        }
-
-
+        const books = <BookList books={this.state.books}
+            deleteBookState={this.deleteBookState}
+            changeWithInputState={this.changeWithInputState}
+        />
 
         console.log(books);
 
+        return (
+            <div className="App">
+                <div className='nav-bar'>
+                    <ul>
+                        <li>
+                            {/* <a href="/">Home</a> */}
+
+                            <Link to="/"> Home</Link>
+                        </li>
+
+                        <li>
+                            {/* <a href="/new-book">NewBook</a> */}
+
+                            <Link to="/new-book">New Book</Link>
+                        </li>
+                    </ul>
+                </div>
+
+                {/* <Route path="/" render={() => <h1>Home</h1>}/> */}
+
+                <Routes>
+                    {/* <Route path="/" element={<h1>Home</h1>} />
+                    <Route path="/new-book" element={<h1>New Book</h1>} /> */}
+
+                    <Route path="/" element={books} />
+                    <Route path="/new-book" element={<NewBook />} />
 
 
 
 
-
-        return (<div className="App">
-
-            <div className='nav-bar'>
-
-                <ul>
-                    <li>
-                        <a href='/'>Home</a>
-                    </li>
-
-                    <li>
-                        <a href='/new'>NewBook</a>
-                    </li>
-                </ul>
+                </Routes>
 
 
             </div>
-
-
-
-            <h1> Book List  </h1>
-
-
-            <button onClick={this.toggleBooks}> Toggle Books </button>
-
-            {books}
-
-            {/* <input type="text" onChange={this.changeWithInputState} />
-      <br></br>
-      <button onClick={this.changeBookState.bind(this, "2021 is the biggest year for me ")}> Change State </button>
-  
-      <Book Writer={this.state.books[0].bookName}
-        BookName={this.state.books[0].Writer}
-        changeBookName={this.changeWithInputState} />
-      <Book Writer={this.state.books[1].bookName}
-        BookName={this.state.books[1].Writer} change={this.changeBookState.bind(this, "2021 has taught me a lot  ")} />
-      <Book Writer={this.state.books[2].bookName}
-        BookName={this.state.books[2].Writer}
-        changeBookName={this.changeWithInputState} /> */}
-
-            {/* // {books} */}
-
-            <NewBook />
-
-
-
-
-        </div>);
-
-
+        );
     }
 
 }
