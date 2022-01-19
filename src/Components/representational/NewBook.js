@@ -1,43 +1,48 @@
 import { render } from "@testing-library/react";
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 
 class NewBook extends Component {
 
     constructor(props) {
         super(props);
-        this.state =
-        {
-            bookName: "",
-            writer: "",
-            description: ""
+        this.bookName = React.createRef();
+        this.writer = React.createRef();
+        this.description = React.createRef();
+        // this.state =
+        // {
+        //     bookName: "",
+        //     writer: "",
+        //     description: ""
 
-        }
+        // }
 
-        this.handleInputChange = this.handleInputChange.bind(this);
+        // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit = event => {
 
-        console.log(this.state);
+        console.log(this.bookName.current.value);
+        console.log(this.writer.current.value);
+        console.log(this.description.current.value);
         event.preventDefault();
 
 
 
     }
 
-    handleInputChange = event => {
+    // handleInputChange = event => {
 
-        const name = event.target.name;
-        const value = event.target.value;
-        // console.log(name, value);
-        this.setState({
+    //     const name = event.target.name;
+    //     const value = event.target.value;
+    //     // console.log(name, value);
+    //     this.setState({
 
-            [name]: value
+    //         [name]: value
 
 
-        })
-    }
+    //     })
+    // }
 
     // componentDidUpdate() {
     //     // console.log(this.state);
@@ -56,7 +61,7 @@ class NewBook extends Component {
                     </label>
                     <br />
 
-                    <input type="text" name="bookName" value={this.state.bookName} onChange={this.handleInputChange} />
+                    <input type="text" name="bookName" ref={this.bookName} />
                     <br />
 
 
@@ -65,7 +70,7 @@ class NewBook extends Component {
                     </label>
                     <br />
 
-                    <input type="text" name="writer" value={this.state.writer} onChange={this.handleInputChange} />
+                    <input type="text" name="writer" ref={this.writer} />
 
                     <label>
                         <br />
@@ -73,7 +78,7 @@ class NewBook extends Component {
                     </label>
                     <br />
 
-                    <textarea name="description" value={this.state.description} onChange={this.handleInputChange} />
+                    <textarea name="description" ref={this.description} />
                     <br />
 
 
