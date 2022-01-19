@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import booklist from '../assets/books';
 import BookList from './lists/BookList';
 import NewBook from './representational/NewBook';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, Link, NavLink, nav } from 'react-router-dom';
 import { render } from "react-dom";
+import BookDetail from './representational/BookDetail';
 
 
 class MainComponent extends Component {
@@ -13,71 +14,86 @@ class MainComponent extends Component {
         this.state =
         {
             books: booklist,
+            selectedBook: null
         }
     }
 
-    changeWithInputState = (e, index) => {
+    selectedBookHandeler = book => {
+        this.setState(
+            {
+                selectedBook: book
+            }
 
-        const book = {
+        )
 
-            ...this.state.books[index]
-        }
 
-        book.bookName = e.target.value;
-
-        const book1 = [...this.state.books];
-
-        book1[index] = book;
-
-        this.setState({
-
-            books: book1
-        });
     }
 
+    // changeWithInputState = (e, index) => {
 
-    deleteBookState = (index) => {
+    //     const book = {
 
-        const book = this.state.books.slice();
-        // sob gula boi books er modhe anlam 
+    //         ...this.state.books[index]
+    //     }
 
-        book.splice(index, 1);
+    //     book.bookName = e.target.value;
 
-        // eta java Script er built in function kno kisu delete korar jnno 
+    //     const book1 = [...this.state.books];
 
-        this.setState({
+    //     book1[index] = book;
 
-            books: book
-        })
-    }
+    //     this.setState({
+
+    //         books: book1
+    //     });
+    // }
+
+
+    // deleteBookState = (index) => {
+
+    //     const book = this.state.books.slice();
+    //     // sob gula boi books er modhe anlam 
+
+    //     book.splice(index, 1);
+
+    //     // eta java Script er built in function kno kisu delete korar jnno 
+
+    //     this.setState({
+
+    //         books: book
+    //     })
+    // }
 
 
     render() {
 
         const books = <BookList books={this.state.books}
-            deleteBookState={this.deleteBookState}
-            changeWithInputState={this.changeWithInputState}
+            // deleteBookState={this.deleteBookState}
+            // changeWithInputState={this.changeWithInputState}
+            selectedBookHandeler={this.selectedBookHandeler}
+
         />
 
-        console.log(books);
+        // console.log(books);
 
         return (
             <div className="App">
-                <div className='nav-bar'>
+                <nav className='nav-bar'>
                     <ul>
                         <li>
                             {/* <a href="/">Home</a> */}
 
-                            <Link to="/"> Home</Link>
+                            <NavLink to="/"> Home</NavLink>
                         </li>
 
                         <li>
                             {/* <a href="/new-book">NewBook</a> */}
 
-                            <Link to="/new-book">New Book</Link>
+                            <NavLink to="/new-book">New Book</NavLink>
                         </li>
                     </ul>
-                </div>
+                </nav>
+                <BookDetail book={this.state.selectedBook} />
 
                 {/* <Route path="/" render={() => <h1>Home</h1>}/> */}
 
@@ -91,7 +107,10 @@ class MainComponent extends Component {
 
 
 
+
+
                 </Routes>
+
 
 
             </div>
@@ -102,4 +121,4 @@ class MainComponent extends Component {
 
 
 
-export default MainComponent;
+export default MainComponent;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
